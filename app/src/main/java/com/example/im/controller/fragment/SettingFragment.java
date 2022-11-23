@@ -20,10 +20,7 @@ import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easeui.widget.EaseTitleBar;
 
-/**
- * @Author cyh
- * @Date 2021/6/1 19:22
- */
+
 public class SettingFragment extends Fragment {
     private Button bt_setting_logout;
     private TextView userId_view;
@@ -71,7 +68,6 @@ public class SettingFragment extends Fragment {
                         EMClient.getInstance().logout(false, new EMCallBack() {
                             @Override
                             public void onSuccess() {
-
                                 //关闭DBHelper
                                 Model.getInstance().getDbManager().close();
 

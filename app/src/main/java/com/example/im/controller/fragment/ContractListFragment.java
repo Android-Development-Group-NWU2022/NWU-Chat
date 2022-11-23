@@ -36,10 +36,7 @@ import com.hyphenate.exceptions.HyphenateException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @Author cyh
- * @Date 2021/6/1 19:21
- */
+
 //联系人列表页面
 public class ContractListFragment extends EaseContactListFragment implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
     private EaseSearchTextView tvSearch;
@@ -75,70 +72,7 @@ public class ContractListFragment extends EaseContactListFragment implements Vie
         //注册广播
         mLBM = LocalBroadcastManager.getInstance(getActivity());
         mLBM.registerReceiver(ContactInviteChangeReceiver, new IntentFilter(Constant.CONTACT_INVITE_CHANGED));
-        //mLBM.registerReceiver(ContactChangeChangeReceiver,new IntentFilter(Constant.CONTACT_CHANGED));
-
-        //从环信服务器获取所有联系人的信息(自带了 ，缺广播)
-        //getContactFromHxServer();
-
-        //绑定一下listView和contactMenu
-        //registerForContextMenu();
-
-
     }
-
-    /*private void getContactFromHxServer() {
-        Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    //获取到所有的好友的环信id
-                    List<String> hxids = EMClient.getInstance().contactManager().getAllContactsFromServer();
-
-                    //校验
-                    if (hxids != null && hxids.size() >= 0) {
-
-                        List<UserInfo> contacts = new ArrayList<UserInfo>();
-                        //转换
-                        for (String hxid : hxids) {
-                            UserInfo userInfo = new UserInfo(hxid);
-                            contacts.add(userInfo);
-                        }
-
-                        //保存好友信息到本地数据库
-                        Model.getInstance().getDbManager().getContactTableDao().saveContacts(contacts, true);
-
-                        if (getActivity() == null) {
-                            return;
-                        }
-
-                        //刷新页面
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                //刷新页面的方法
-                                refreshContact();
-                            }
-                        });
-
-                    }
-                } catch (HyphenateException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-
-    private void refreshContact() {
-
-        //刷新页面
-        List<UserInfo> contacts = Model.getInstance().getDbManager().getContactTableDao().getContacts();
-
-        //校验
-        if (contacts != null && contacts.size() >= 0) {
-            contactLayout.getContactList().refreshList();
-        }
-    }*/
 
     @Override
     public void onMenuPreShow(EasePopupMenuHelper menuHelper, int position) {
@@ -231,10 +165,7 @@ public class ContractListFragment extends EaseContactListFragment implements Vie
     private void addHeader() {
         contactLayout.getContactList().addCustomItem(R.id.contact_header_item_new_chat, R.drawable.em_friends_new_chat, "添加好友");
         contactLayout.getContactList().addCustomItem(R.id.contact_header_item_chat_room_list, R.drawable.em_friends_chat_room, "好友申请");
-        contactLayout.getContactList().addCustomItem(R.id.contact_header_item_group_list, R.drawable.em_friends_group_chat, "群聊");
-
-        /*View headView = View.inflate(getActivity(), R.layout.header_fragment_contact, null);
-        llRoot.addView(headView,2);*/
+//        contactLayout.getContactList().addCustomItem(R.id.contact_header_item_group_list, R.drawable.em_friends_group_chat, "群聊");
     }
 
     @Override

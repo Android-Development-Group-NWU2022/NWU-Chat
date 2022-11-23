@@ -20,10 +20,6 @@ import com.hyphenate.easeui.widget.EaseTitleBar;
 
 import static com.hyphenate.easeui.widget.EaseImageView.ShapeType.RECTANGLE;
 
-/**
- * @Author cyh
- * @Date 2021/6/1 17:55
- */
 //会话列表页面
 public class ChatFragment extends EaseConversationListFragment {
 
