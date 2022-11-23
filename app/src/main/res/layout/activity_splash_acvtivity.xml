@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:andriod="http://schemas.android.com/apk/res/android"
+    andriod:layout_width="match_parent"
+    andriod:layout_height="match_parent">
+
+    <ImageView
+        andriod:id="@+id/iv_logo"
+        andriod:layout_width="match_parent"
+        andriod:layout_height="match_parent"
+        andriod:scaleType="centerCrop"
+        andriod:src="@drawable/im_welcome" />
+
+</FrameLayout>
