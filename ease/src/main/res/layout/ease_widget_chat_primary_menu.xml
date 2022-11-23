@@ -93,33 +93,33 @@
 
         </FrameLayout>
 
-        <RelativeLayout
-            android:id="@+id/rl_face"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="6dp"
-            android:layout_marginEnd="6dp">
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/rl_face"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginRight="6dp"-->
+<!--            android:layout_marginEnd="6dp">-->
 
-            <ImageView
-                android:id="@+id/iv_face_normal"
-                android:layout_width="@dimen/ease_chat_primary_menu_icon_size"
-                android:layout_height="@dimen/ease_chat_primary_menu_icon_size"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ease_chatting_biaoqing_btn_normal"
-                android:padding="5dp"
-                android:visibility="visible" />
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_face_normal"-->
+<!--                android:layout_width="@dimen/ease_chat_primary_menu_icon_size"-->
+<!--                android:layout_height="@dimen/ease_chat_primary_menu_icon_size"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/ease_chatting_biaoqing_btn_normal"-->
+<!--                android:padding="5dp"-->
+<!--                android:visibility="visible" />-->
 
-            <ImageView
-                android:id="@+id/iv_face_checked"
-                android:layout_width="@dimen/ease_chat_primary_menu_icon_size"
-                android:layout_height="@dimen/ease_chat_primary_menu_icon_size"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ease_chatting_setmode_keyboard_btn"
-                android:padding="5dp"
-                android:visibility="invisible" />
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_face_checked"-->
+<!--                android:layout_width="@dimen/ease_chat_primary_menu_icon_size"-->
+<!--                android:layout_height="@dimen/ease_chat_primary_menu_icon_size"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                android:src="@drawable/ease_chatting_setmode_keyboard_btn"-->
+<!--                android:padding="5dp"-->
+<!--                android:visibility="invisible" />-->
 
-        </RelativeLayout>
+<!--        </RelativeLayout>-->
 
         <CheckBox
             android:id="@+id/btn_more"

@@ -34,8 +34,8 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
     private FrameLayout edittext_layout;
     private EaseInputEditText editText;
     private RelativeLayout faceLayout;
-    private ImageView faceNormal;
-    private ImageView faceChecked;
+    //private ImageView faceNormal;
+    //private ImageView faceChecked;
     private CheckBox buttonMore;
     private Button buttonSend;
 
@@ -67,9 +67,9 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
         buttonPressToSpeak = findViewById(R.id.btn_press_to_speak);
         edittext_layout = findViewById(R.id.edittext_layout);
         editText = findViewById(R.id.et_sendmessage);
-        faceLayout = findViewById(R.id.rl_face);
-        faceNormal = findViewById(R.id.iv_face_normal);
-        faceChecked = findViewById(R.id.iv_face_checked);
+        //faceLayout = findViewById(R.id.rl_face);
+        //faceNormal = findViewById(R.id.iv_face_normal);
+        //faceChecked = findViewById(R.id.iv_face_checked);
         buttonMore = findViewById(R.id.btn_more);
         buttonSend = findViewById(R.id.btn_send);
 
@@ -85,7 +85,7 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
         buttonSetModeKeyboard.setOnClickListener(this);
         buttonSetModeVoice.setOnClickListener(this);
         buttonMore.setOnClickListener(this);
-        faceLayout.setOnClickListener(this);
+        //faceLayout.setOnClickListener(this);
         editText.setOnClickListener(this);
         editText.setOnEditTextChangeListener(this);
         editText.addTextChangedListener(this);
@@ -170,17 +170,17 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
         edittext_layout.setVisibility(VISIBLE);
         buttonPressToSpeak.setVisibility(GONE);
         buttonMore.setChecked(false);
-        if(faceNormal.getVisibility() == VISIBLE) {
-            hideSoftKeyboard();
-            showSelectedFaceImage();
-        }else {
-            showSoftKeyboard(editText);
-            showNormalFaceImage();
-        }
+//        if(faceNormal.getVisibility() == VISIBLE) {
+//            hideSoftKeyboard();
+//            showSelectedFaceImage();
+//        }else {
+//            showSoftKeyboard(editText);
+//            showNormalFaceImage();
+//        }
         checkMenuType();
-        if(listener != null) {
-            listener.onToggleEmojiconClicked(faceChecked.getVisibility() == VISIBLE);
-        }
+//        if(listener != null) {
+//            listener.onToggleEmojiconClicked(faceChecked.getVisibility() == VISIBLE);
+//        }
     }
 
     @Override
@@ -260,9 +260,10 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
             showMoreStatus();
         }else if (id == R.id.et_sendmessage) {//切换到文本模式
             showTextStatus();
-        }else if (id == R.id.rl_face) {//切换到表情模式
-            showEmojiconStatus();
         }
+//        else if (id == R.id.rl_face) {//切换到表情模式
+//            showEmojiconStatus();
+//        }
     }
 
     @Override
@@ -285,17 +286,17 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
             buttonSetModeKeyboard.setVisibility(GONE);
             buttonPressToSpeak.setVisibility(GONE);
         }else if(menuType == EaseInputMenuStyle.DISABLE_EMOJICON) {
-            faceLayout.setVisibility(GONE);
+            //faceLayout.setVisibility(GONE);
         }else if(menuType == EaseInputMenuStyle.DISABLE_VOICE_EMOJICON) {
             buttonSetModeVoice.setVisibility(GONE);
             buttonSetModeKeyboard.setVisibility(GONE);
             buttonPressToSpeak.setVisibility(GONE);
-            faceLayout.setVisibility(GONE);
+            //faceLayout.setVisibility(GONE);
         }else if(menuType == EaseInputMenuStyle.ONLY_TEXT) {
             buttonSetModeVoice.setVisibility(GONE);
             buttonSetModeKeyboard.setVisibility(GONE);
             buttonPressToSpeak.setVisibility(GONE);
-            faceLayout.setVisibility(GONE);
+            //faceLayout.setVisibility(GONE);
             buttonMore.setVisibility(GONE);
         }
     }
@@ -312,13 +313,13 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
     }
 
     private void showNormalFaceImage(){
-        faceNormal.setVisibility(View.VISIBLE);
-        faceChecked.setVisibility(View.INVISIBLE);
+        //faceNormal.setVisibility(View.VISIBLE);
+        //faceChecked.setVisibility(View.INVISIBLE);
     }
 
     private void showSelectedFaceImage(){
-        faceNormal.setVisibility(View.INVISIBLE);
-        faceChecked.setVisibility(View.VISIBLE);
+        //faceNormal.setVisibility(View.INVISIBLE);
+        //faceChecked.setVisibility(View.VISIBLE);
     }
 
     /**

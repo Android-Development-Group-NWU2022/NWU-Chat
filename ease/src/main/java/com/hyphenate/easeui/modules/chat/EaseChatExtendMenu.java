@@ -50,11 +50,17 @@ public class EaseChatExtendMenu extends FrameLayout implements PagingScrollHelpe
     private EaseChatExtendMenuIndicatorAdapter indicatorAdapter;
     private EaseChatExtendMenuItemClickListener itemListener;
 
-    private int[] itemStrings = { R.string.attach_take_pic, R.string.attach_picture,
-            R.string.attach_location, R.string.attach_video, R.string.attach_file};
-    private int[] itemdrawables = { R.drawable.ease_chat_takepic_selector, R.drawable.ease_chat_image_selector,
-            R.drawable.ease_chat_location_selector, R.drawable.em_chat_video_selector, R.drawable.em_chat_file_selector};
-    private int[] itemIds = { R.id.extend_item_take_picture, R.id.extend_item_picture, R.id.extend_item_location, R.id.extend_item_video, R.id.extend_item_file};
+//    private int[] itemStrings = { R.string.attach_take_pic, R.string.attach_picture,
+//            R.string.attach_location, R.string.attach_video, R.string.attach_file};
+//    private int[] itemdrawables = { R.drawable.ease_chat_takepic_selector, R.drawable.ease_chat_image_selector,
+//            R.drawable.ease_chat_location_selector, R.drawable.em_chat_video_selector, R.drawable.em_chat_file_selector};
+//    private int[] itemIds = { R.id.extend_item_take_picture, R.id.extend_item_picture, R.id.extend_item_location, R.id.extend_item_video, R.id.extend_item_file};
+
+    private int[] itemStrings = {R.string.attach_picture, R.string.attach_location};
+    private int[] itemdrawables = {  R.drawable.ease_chat_image_selector,
+            R.drawable.ease_chat_location_selector};
+    private int[] itemIds = {  R.id.extend_item_picture, R.id.extend_item_location};
+
 
     public EaseChatExtendMenu(Context context) {
         this(context, null);
@@ -73,7 +79,7 @@ public class EaseChatExtendMenu extends FrameLayout implements PagingScrollHelpe
     private void init(Context context, AttributeSet attrs){
         this.context = context;
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.EaseChatExtendMenu);
-        numColumns = ta.getInt(R.styleable.EaseChatExtendMenu_numColumns, 4);
+        numColumns = ta.getInt(R.styleable.EaseChatExtendMenu_numColumns, 3);
         numRows = ta.getInt(R.styleable.EaseChatExtendMenu_numRows, 2);
         ta.recycle();
     }
