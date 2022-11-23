@@ -25,7 +25,8 @@ public class MainActivity extends FragmentActivity {
     private SettingFragment settingFragment;
     private RadioButton rb_main_chat;
     private RadioButton rb_main_contact;
-    private RadioButton rb_main_setting;
+    //private RadioButton rb_main_setting;
+    private Button rb_main_setting;
 
 
     @Override
