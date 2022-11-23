@@ -1,5 +1,6 @@
 package com.example.im.controller.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,7 +18,9 @@ import com.hyphenate.chat.EMClient;
 //欢迎页面
 public class SplashActivity extends Activity {
 
-    private Handler handler =new Handler(){
+    @SuppressLint("HandlerLeak")
+    private final Handler handler =new Handler(){
+        @SuppressLint("HandlerLeak")
         public void handleMessage(Message msg){
             //如果当前activity已经退出，那么就不处理handler中的消息
             if(isFinishing()){
