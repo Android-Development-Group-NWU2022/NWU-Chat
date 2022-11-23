@@ -7,10 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.im.model.dao.ContactTable;
 import com.example.im.model.dao.InviteTable;
 
-/**
- * @Author cyh
- * @Date 2021/6/3 15:23
- */
+
 public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context,String name) {
