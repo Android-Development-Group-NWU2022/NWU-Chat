@@ -10,7 +10,7 @@
         android:id="@+id/fl_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></FrameLayout>
+        android:layout_weight="1" />
 
     <RadioGroup
         android:id="@+id/rg_main"
@@ -22,8 +22,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:background="@drawable/main_bottom_bg_selector"
             android:text="@string/messageicon1"
+            android:button="@null"
             android:textSize="30sp"
             />
         <RadioButton
@@ -31,8 +33,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:background="@drawable/main_bottom_bg_selector"
             android:text="@string/contactincon1"
+            android:button="@null"
             android:textSize="30sp"
             />
 
@@ -41,9 +45,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:background="@drawable/main_bottom_bg_selector"
             android:text="@string/usericon1"
+            android:button="@null"
             android:textSize="30sp"
             />
+
     </RadioGroup>
+
+
 </LinearLayout>

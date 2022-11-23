@@ -37,9 +37,9 @@ public class ChatActivity extends FragmentActivity {
         Intent intent=getIntent();
         titleBar.setTitle(intent.getStringExtra(EaseConstant.EXTRA_CONVERSATION_ID));
         //设置右侧图标
-        titleBar.setRightImageResource(R.drawable.chat_user_info);
+        //titleBar.setRightImageResource(R.drawable.chat_user_info);
         //设置左侧图标
-        titleBar.setLeftImageResource(R.drawable.ease_mm_title_back);
+        //titleBar.setLeftImageResource(R.drawable.ease_mm_title_back);
 
     }
 

@@ -141,14 +141,14 @@ public class ContractListFragment extends EaseContactListFragment implements Vie
         //添加搜索会话布局
         View searchView = LayoutInflater.from(mContext).inflate(R.layout.contract_search, null);
         llRoot.addView(searchView, 0);
-        tvSearch = searchView.findViewById(R.id.tv_search);
-        tvSearch.setHint("搜索");
+        //tvSearch = searchView.findViewById(R.id.tv_search);
+        //tvSearch.setHint("搜索");
 
         //获取控件
         EaseTitleBar titleBar = findViewById(R.id.fragment_title_bar);
 
         //设置标题
-        //titleBar.setTitle("联系人列表");
+        titleBar.setTitle("联系人列表");
 
         //添加右侧图标
         titleBar.setRightImageResource(R.drawable.em_contact_menu_add);
@@ -173,7 +173,7 @@ public class ContractListFragment extends EaseContactListFragment implements Vie
         super.initListener();
         //刷新联系人
         contactLayout.getSwipeRefreshLayout().setOnRefreshListener(this);
-        tvSearch.setOnClickListener(this);
+        //tvSearch.setOnClickListener(this);
         contactLayout.getContactList().setOnCustomItemClickListener(new OnItemClickListener() {
 
             private Intent intent;

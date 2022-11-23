@@ -16,16 +16,16 @@
         android:background="@color/white"
         app:titleBarDisplayHomeAsUpEnabled="false"/>
 
-    <com.hyphenate.easeui.widget.EaseSearchTextView
-        android:id="@+id/tv_search"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:hint="搜索"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="3dp"/>
+<!--    <com.hyphenate.easeui.widget.EaseSearchTextView-->
+<!--        android:id="@+id/tv_search"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="36dp"-->
+<!--        android:hint="搜索"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginBottom="3dp"/>-->
 
 </LinearLayout>
