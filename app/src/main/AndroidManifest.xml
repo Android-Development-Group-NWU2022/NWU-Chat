@@ -47,11 +47,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IM"
         android:usesCleartextTraffic="true">
-        <activity android:name=".controller.activity.ChatActivity"></activity>
+        <activity android:name=".controller.activity.ChatActivity" />
         <activity android:name=".controller.activity.InviteActivity" />
         <activity android:name=".controller.activity.AddContactActivity" />
         <activity android:name=".controller.activity.MainActivity" />
         <activity android:name=".controller.activity.LoginActivity" />
+        <activity android:name=".controller.activity.RegisterActivity" />
         <activity android:name=".controller.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

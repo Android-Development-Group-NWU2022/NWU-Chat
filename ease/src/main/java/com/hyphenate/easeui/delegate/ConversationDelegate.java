@@ -102,7 +102,8 @@ public class ConversationDelegate extends EaseBaseDelegate<EMConversation, Conve
                 EMChatRoom chatRoom = EMClient.getInstance().chatroomManager().getChatRoom(username);
                 name.setText(chatRoom != null && !TextUtils.isEmpty(chatRoom.getName()) ? chatRoom.getName() : username);
             }else {
-                avatar.setImageResource(R.drawable.toux);
+                //avatar.setImageResource(R.drawable.toux);
+                avatar.setImageResource(R.drawable.toux1);
                 name.setText(username);
             }
 

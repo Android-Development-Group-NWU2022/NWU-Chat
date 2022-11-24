@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back3"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        android:text="NWU Chat"
+        android:textSize="28sp"
+        android:gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/user_input"
+        android:gravity="center"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="账号"
+        android:layout_centerVertical="true"
+        android:textSize="20sp"/>
+    <!--        android:digits="0123456789"-->
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/password_input"
+        android:gravity="center"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="密码"
+        android:inputType="textPassword"
+        android:layout_below="@id/user_input"
+        android:textSize="20sp"
+        android:password="true"/>
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/duplicate_password_input"
+        android:gravity="center"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="密码"
+        android:inputType="textPassword"
+        android:layout_below="@id/user_input"
+        android:textSize="20sp"
+        android:password="true"/>
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="注册账号"
+        android:textSize="20sp"
+        android:background="@color/teal_200"
+        android:textColor="@color/black"
+        />
+
+
+
+</LinearLayout>

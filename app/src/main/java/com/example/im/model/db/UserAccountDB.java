@@ -8,10 +8,6 @@ import androidx.annotation.Nullable;
 
 import com.example.im.model.dao.UserAccountTable;
 
-/**
- * @Author cyh
- * @Date 2021/6/1 15:54
- */
 public class UserAccountDB extends SQLiteOpenHelper {
 
     //构造

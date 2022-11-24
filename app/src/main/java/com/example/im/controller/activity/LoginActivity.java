@@ -45,7 +45,10 @@ public class LoginActivity extends Activity {
         login_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                regist();
+                Intent intent=new Intent();
+                intent.setClass(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+                //regist();
             }
         });
 
@@ -123,47 +126,6 @@ public class LoginActivity extends Activity {
             }
         });
 
-    }
-
-    //注册的业务逻辑处理
-    private void regist() {
-        //1 获取输入的用户名和密码
-        String registName=et_login_name.getText().toString();
-        String registPwd = et_login_pwd.getText().toString();
-
-        //2 校验输入的用户名和密码
-        if (TextUtils.isEmpty(registName) || TextUtils.isEmpty(registPwd)) {
-            Toast.makeText(LoginActivity.this,"输入的用户名或密码不能为空",Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        //3 去服务器注册
-        Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    //去环信服务器注册账号
-                    EMClient.getInstance().createAccount(registName,registPwd);
-
-                    //更新页面显示
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(LoginActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                } catch (HyphenateException e) {
-                    e.printStackTrace();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(LoginActivity.this,"注册失败"+e.toString(),Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            }
-        });
     }
 
     private void initView() {

@@ -28,7 +28,7 @@ import com.hyphenate.easeui.modules.chat.interfaces.IChatPrimaryMenu;
 
 public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryMenu, View.OnClickListener, EaseInputEditText.OnEditTextChangeListener, TextWatcher {
     private LinearLayout rlBottom;
-    private ImageView buttonSetModeVoice;
+    //private ImageView buttonSetModeVoice;
     private ImageView buttonSetModeKeyboard;
     private FrameLayout buttonPressToSpeak;
     private FrameLayout edittext_layout;
@@ -62,9 +62,10 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
 
     private void initViews() {
         rlBottom = findViewById(R.id.rl_bottom);
-        buttonSetModeVoice = findViewById(R.id.btn_set_mode_voice);
+        //buttonSetModeVoice = findViewById(R.id.btn_set_mode_voice);
         buttonSetModeKeyboard = findViewById(R.id.btn_set_mode_keyboard);
         buttonPressToSpeak = findViewById(R.id.btn_press_to_speak);
+
         edittext_layout = findViewById(R.id.edittext_layout);
         editText = findViewById(R.id.et_sendmessage);
         //faceLayout = findViewById(R.id.rl_face);
@@ -83,21 +84,21 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
     private void initListener() {
         buttonSend.setOnClickListener(this);
         buttonSetModeKeyboard.setOnClickListener(this);
-        buttonSetModeVoice.setOnClickListener(this);
+        //buttonSetModeVoice.setOnClickListener(this);
         buttonMore.setOnClickListener(this);
         //faceLayout.setOnClickListener(this);
         editText.setOnClickListener(this);
         editText.setOnEditTextChangeListener(this);
         editText.addTextChangedListener(this);
-        buttonPressToSpeak.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(listener != null){
-                    return listener.onPressToSpeakBtnTouch(v, event);
-                }
-                return false;
-            }
-        });
+//        buttonPressToSpeak.setOnTouchListener(new OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if(listener != null){
+//                    return listener.onPressToSpeakBtnTouch(v, event);
+//                }
+//                return false;
+//            }
+//        });
     }
 
     private void checkSendButton() {
@@ -125,7 +126,7 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
     @Override
     public void showNormalStatus() {
         hideSoftKeyboard();
-        buttonSetModeVoice.setVisibility(VISIBLE);
+        //buttonSetModeVoice.setVisibility(VISIBLE);
         buttonSetModeKeyboard.setVisibility(GONE);
         edittext_layout.setVisibility(VISIBLE);
         buttonPressToSpeak.setVisibility(GONE);
@@ -136,7 +137,7 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
 
     @Override
     public void showTextStatus() {
-        buttonSetModeVoice.setVisibility(VISIBLE);
+        //buttonSetModeVoice.setVisibility(VISIBLE);
         buttonSetModeKeyboard.setVisibility(GONE);
         edittext_layout.setVisibility(VISIBLE);
         buttonPressToSpeak.setVisibility(GONE);
@@ -152,7 +153,7 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
     @Override
     public void showVoiceStatus() {
         hideSoftKeyboard();
-        buttonSetModeVoice.setVisibility(GONE);
+        //buttonSetModeVoice.setVisibility(GONE);
         buttonSetModeKeyboard.setVisibility(VISIBLE);
         edittext_layout.setVisibility(GONE);
         buttonPressToSpeak.setVisibility(VISIBLE);
@@ -165,7 +166,7 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
 
     @Override
     public void showEmojiconStatus() {
-        buttonSetModeVoice.setVisibility(VISIBLE);
+        //buttonSetModeVoice.setVisibility(VISIBLE);
         buttonSetModeKeyboard.setVisibility(GONE);
         edittext_layout.setVisibility(VISIBLE);
         buttonPressToSpeak.setVisibility(GONE);
@@ -187,7 +188,7 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
     public void showMoreStatus() {
         if(buttonMore.isChecked()) {
             hideSoftKeyboard();
-            buttonSetModeVoice.setVisibility(VISIBLE);
+            //buttonSetModeVoice.setVisibility(VISIBLE);
             buttonSetModeKeyboard.setVisibility(GONE);
             edittext_layout.setVisibility(VISIBLE);
             buttonPressToSpeak.setVisibility(GONE);
@@ -252,11 +253,14 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
                 editText.setText("");
                 listener.onSendBtnClicked(s);
             }
-        }else if(id == R.id.btn_set_mode_voice) {//切换到语音模式
-            showVoiceStatus();
-        }else if (id == R.id.btn_set_mode_keyboard) {//切换到文本模式
+        }
+//        else if(id == R.id.btn_set_mode_voice) {//切换到语音模式
+//            showVoiceStatus();
+//        }
+        else if (id == R.id.btn_set_mode_keyboard) {//切换到文本模式
             showTextStatus();
-        }else if (id == R.id.btn_more) {//切换到更多模式
+        }
+        else if (id == R.id.btn_more) {//切换到更多模式
             showMoreStatus();
         }else if (id == R.id.et_sendmessage) {//切换到文本模式
             showTextStatus();
@@ -282,18 +286,18 @@ public class EaseChatPrimaryMenu extends RelativeLayout implements IChatPrimaryM
 
     private void checkMenuType() {
         if(menuType == EaseInputMenuStyle.DISABLE_VOICE) {
-            buttonSetModeVoice.setVisibility(GONE);
+            //buttonSetModeVoice.setVisibility(GONE);
             buttonSetModeKeyboard.setVisibility(GONE);
             buttonPressToSpeak.setVisibility(GONE);
         }else if(menuType == EaseInputMenuStyle.DISABLE_EMOJICON) {
             //faceLayout.setVisibility(GONE);
         }else if(menuType == EaseInputMenuStyle.DISABLE_VOICE_EMOJICON) {
-            buttonSetModeVoice.setVisibility(GONE);
+            //buttonSetModeVoice.setVisibility(GONE);
             buttonSetModeKeyboard.setVisibility(GONE);
             buttonPressToSpeak.setVisibility(GONE);
             //faceLayout.setVisibility(GONE);
         }else if(menuType == EaseInputMenuStyle.ONLY_TEXT) {
-            buttonSetModeVoice.setVisibility(GONE);
+            //buttonSetModeVoice.setVisibility(GONE);
             buttonSetModeKeyboard.setVisibility(GONE);
             buttonPressToSpeak.setVisibility(GONE);
             //faceLayout.setVisibility(GONE);

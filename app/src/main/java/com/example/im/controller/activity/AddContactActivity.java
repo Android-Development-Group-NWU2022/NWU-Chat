@@ -2,7 +2,9 @@ package com.example.im.controller.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +15,20 @@ import android.widget.Toast;
 import com.example.im.R;
 import com.example.im.model.Model;
 import com.example.im.model.bean.UserInfo;
+import com.example.im.model.dao.ContactTableDao;
+import com.example.im.model.dao.UserAccountDao;
+import com.example.im.model.db.DBHelper;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.EMValueCallBack;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMUserInfo;
+import com.hyphenate.chat.EMUserInfoManager;
 import com.hyphenate.exceptions.HyphenateException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 //添加联系人页面
 public class AddContactActivity extends Activity {
@@ -67,21 +81,85 @@ public class AddContactActivity extends Activity {
             return;
         }
 
+
         //去服务器判断当前用户是否存在
         Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
             @Override
             public void run() {
                 //去服务器判断当前查找的用户是否存在
-                userInfo = new UserInfo(name);
 
-                //更新UI显示
-                runOnUiThread(new Runnable() {
+//                UserAccountDao user=Model.getInstance().getUserAccountDao();
+//
+//                ContactTableDao contact=new ContactTableDao(new DBHelper(AddContactActivity.this,"account.db"));
+//                UserInfo userInfo=user.getAccountByHxid(name);
+//                Log.v("userinfo", String.valueOf(userInfo));
+                String[] username={name};
+//
+//                EMUserInfoManager manager=EMClient.getInstance().userInfoManager();
+
+                Log.v("username", Arrays.toString(username));
+
+                //111
+                Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
+
                     @Override
                     public void run() {
-                        rl_add.setVisibility(View.VISIBLE);
-                        tv_add_name.setText(userInfo.getName());
+                        EMUserInfoManager manager=EMClient.getInstance().userInfoManager();
+                        manager.fetchUserInfoByUserId(username,new EMValueCallBack<Map<String, EMUserInfo>>(){
+
+                            @Override
+                            public void onSuccess(Map<String, EMUserInfo> value) {
+
+
+                                //更新UI显示用户信息
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        userInfo = new UserInfo(name);
+                                        rl_add.setVisibility(View.VISIBLE);
+                                        tv_add_name.setText(name);
+                                        Log.v("userinfo", String.valueOf(value));
+                                        //tv_add_name.setText(userInfo.getName());
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onError(int code, String error) {
+                                //用户不存在更新UI显示
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(AddContactActivity.this,"用户不存在",Toast.LENGTH_SHORT).show();
+                                        Log.v("error3145",error);
+                                    }
+                                });
+                            }
+
+                        });
                     }
                 });
+
+
+
+//                if (userInfo!=null){
+//                    //更新UI显示用户信息
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        rl_add.setVisibility(View.VISIBLE);
+//                        tv_add_name.setText(userInfo.getName());
+//                    }
+//                });}else {
+//                   //用户不存在更新UI显示
+//                   runOnUiThread(new Runnable() {
+//                       @Override
+//                       public void run() {
+//                           Toast.makeText(AddContactActivity.this,"用户不存在",Toast.LENGTH_SHORT).show();
+//                       }
+//                   });
+//
+//               }
 
             }
         });

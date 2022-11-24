@@ -21,13 +21,13 @@
         android:paddingTop="4dp"
         android:paddingBottom="4dp">
 
-        <ImageView
-            android:id="@+id/btn_set_mode_voice"
-            style="@style/ease_chat_input_button_size"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="16dp"
-            android:src="@drawable/ease_chatting_setmode_voice_btn"
-            android:visibility="visible" />
+<!--        <ImageView-->
+<!--            android:id="@+id/btn_set_mode_voice"-->
+<!--            style="@style/ease_chat_input_button_size"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:src="@drawable/ease_chatting_setmode_voice_btn"-->
+<!--            android:visibility="visible" />-->
 
         <ImageView
             android:id="@+id/btn_set_mode_keyboard"

@@ -63,7 +63,8 @@ public class EaseConversationDelegate extends EaseDefaultConversationDelegate {
             EMChatRoom chatRoom = EMClient.getInstance().chatroomManager().getChatRoom(username);
             showName = chatRoom != null && !TextUtils.isEmpty(chatRoom.getName()) ? chatRoom.getName() : username;
         }else {
-            defaultAvatar = R.drawable.ease_default_avatar;
+            //defaultAvatar = R.drawable.ease_default_avatar;
+            defaultAvatar = R.drawable.toux1;
             showName = username;
         }
         holder.avatar.setImageResource(defaultAvatar);
