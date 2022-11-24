@@ -3,8 +3,10 @@ package com.example.im.controller.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -68,6 +70,9 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent();
+                            intent.setClass(RegisterActivity.this,LoginActivity.class);
+                            startActivity(intent);
                         }
                     });
 
@@ -76,7 +81,12 @@ public class RegisterActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(RegisterActivity.this,"注册失败"+e.toString(),Toast.LENGTH_SHORT).show();
+                            if (e.getDescription().equals("User already exist")){
+                                Toast.makeText(RegisterActivity.this,"注册失败,用户名已被使用，请使用其他用户名",Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(RegisterActivity.this,"注册失败"+e.toString(),Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     });
                 }
