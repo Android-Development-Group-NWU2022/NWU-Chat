@@ -50,6 +50,7 @@ dependencies {
     implementation 'io.hyphenate:hyphenate-chat:3.8.1'
     implementation 'com.android.support:support-v4:30.4.1'
     implementation project(path: ':ease')
+    implementation files('libs\\BaiduLBS_Android.jar')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

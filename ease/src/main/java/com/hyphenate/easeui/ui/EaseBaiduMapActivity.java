@@ -1,23 +1,11 @@
-/**
- * Copyright (C) 2016 Hyphenate Inc. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *     http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.hyphenate.easeui.ui;
-
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -51,6 +39,10 @@ import com.hyphenate.easeui.ui.base.EaseBaseActivity;
 import com.hyphenate.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easeui.widget.EaseTitleBar;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Locale;
+
 public class EaseBaiduMapActivity extends EaseBaseActivity implements EaseTitleBar.OnBackPressListener,
 																		EaseTitleBar.OnRightClickListener{
 	private EaseTitleBar titleBarMap;
@@ -81,35 +73,74 @@ public class EaseBaiduMapActivity extends EaseBaseActivity implements EaseTitleB
 		context.startActivity(intent);
 	}
 
+	public static String sHA1(Context context) {
+		try {
+			PackageInfo info = context.getPackageManager().getPackageInfo(
+					context.getPackageName(), PackageManager.GET_SIGNATURES);
+			byte[] cert = info.signatures[0].toByteArray();
+			MessageDigest md = MessageDigest.getInstance("SHA1");
+			byte[] publicKey = md.digest(cert);
+
+			StringBuffer hexString = new StringBuffer();
+			for (int i = 0; i < publicKey.length; i++) {
+				String appendString = Integer.toHexString(0xFF & publicKey[i])
+						.toUpperCase(Locale.US);
+				if (appendString.length() == 1)
+					hexString.append("0");
+				hexString.append(appendString);
+				hexString.append(":");
+			}
+
+			String result = hexString.toString();
+			result = result.substring(0, result.length() - 1);
+			System.out.println("SHA1: " + result);
+			return result;
+		} catch (PackageManager.NameNotFoundException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//initialize SDK with context, should call this before setContentView
 		SDKInitializer.initialize(getApplicationContext());
 		setContentView(R.layout.ease_activity_baidumap);
+
+		sHA1(getBaseContext());
 		setFitSystemForTheme(false, R.color.transparent, true);
+		//ok
 		initIntent();
 		initView();
+		//ok
 		initListener();
 		initData();
 	}
 
+	//ok
 	private void initIntent() {
-		latitude = getIntent().getDoubleExtra("latitude", 0);
-		longtitude = getIntent().getDoubleExtra("longtitude", 0);
+		latitude = getIntent().getDoubleExtra("latitude", 34.148848);
+		longtitude = getIntent().getDoubleExtra("longtitude", 108.883752);
 		address = getIntent().getStringExtra("address");
+		Log.d("message","initIntent初始化完成！");
 	}
 
+	//ok
 	private void initView() {
+		Log.d("message","initView初始化开始！");
 		titleBarMap = findViewById(R.id.title_bar_map);
 		mapView = findViewById(R.id.bmapView);
 		titleBarMap.setRightTitleResource(R.string.button_send);
-		double latitude = getIntent().getDoubleExtra("latitude", 0);
+		double latitude = getIntent().getDoubleExtra("latitude", 34.148848);
 		if(latitude != 0) {
 			titleBarMap.getRightLayout().setVisibility(View.GONE);
+			titleBarMap.getRightLayout().setClickable(true);
 		}else {
 			titleBarMap.getRightLayout().setVisibility(View.VISIBLE);
-			titleBarMap.getRightLayout().setClickable(false);
+			titleBarMap.getRightLayout().setClickable(true);
 		}
 		ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) titleBarMap.getLayoutParams();
 		params.topMargin = (int) EaseCommonUtils.dip2px(this, 24);
@@ -127,14 +158,17 @@ public class EaseBaiduMapActivity extends EaseBaseActivity implements EaseTitleB
 		baiduMap = mapView.getMap();
 		baiduMap.setMapStatus(MapStatusUpdateFactory.zoomTo(15.0f));
 		mapView.setLongClickable(true);
+		Log.d("message","initView初始化完成！");
 	}
 
 	private void initListener() {
 		titleBarMap.setOnBackPressListener(this);
 		titleBarMap.setOnRightClickListener(this);
+		Log.d("message","initListener完成！");
 	}
 
 	private void initData() {
+		Log.d("message"," initData()初始化数据！");
 		if(latitude == 0) {
 			mapView = new MapView(this, new BaiduMapOptions());
 			baiduMap.setMyLocationConfigeration(
@@ -146,6 +180,7 @@ public class EaseBaiduMapActivity extends EaseBaseActivity implements EaseTitleB
 					new BaiduMapOptions().mapStatus(new MapStatus.Builder().target(lng).build()));
 			showMap(latitude, longtitude);
 		}
+		Log.d("initData()  message","经度"+latitude+"纬度"+longtitude);
 		IntentFilter iFilter = new IntentFilter();
 		iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
 		iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
@@ -154,8 +189,12 @@ public class EaseBaiduMapActivity extends EaseBaseActivity implements EaseTitleB
 	}
 
 	protected void showMapWithLocationClient() {
+		Log.d("message","showMapWithLocationClient获取位置开始！");
+		//定位初始化
 		mLocClient = new LocationClient(this);
+		//注册监听器
 		mLocClient.registerLocationListener(new EaseBDLocationListener());
+		//选项配置
 		LocationClientOption option = new LocationClientOption();
 		// open gps
 		option.setOpenGps(true);
@@ -169,10 +208,13 @@ public class EaseBaiduMapActivity extends EaseBaseActivity implements EaseTitleB
 		mLocClient.setLocOption(option);
 		if(!mLocClient.isStarted()) {
 			mLocClient.start();
+			Log.d("message","mLocClient.start()结束！");
 		}
+		Log.d("message","showMapWithLocationClient获取完成！");
 	}
 
 	protected void showMap(double latitude, double longtitude) {
+		Log.d("message","经度"+latitude+"纬度"+longtitude);
 		LatLng lng = new LatLng(latitude, longtitude);
 		CoordinateConverter converter = new CoordinateConverter();
 		converter.coord(lng);

@@ -37,15 +37,6 @@ public class ChatActivity extends FragmentActivity {
         //设置标题为当前点击的用户
         Intent intent = getIntent();
         titleBar.setTitle(intent.getStringExtra(EaseConstant.EXTRA_CONVERSATION_ID));
-        //设置右侧图标
-        //titleBar.setRightImageResource(R.drawable.chat_user_info);
-        //设置左侧图标
-<<<<<<< HEAD
-        titleBar.setLeftImageResource(R.drawable.ease_mm_title_back);
-=======
-        //titleBar.setLeftImageResource(R.drawable.ease_mm_title_back);
-
->>>>>>> 7b93d61ea86156112d27266527557b6604e53c1c
     }
 
 
