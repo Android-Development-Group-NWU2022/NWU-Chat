@@ -57,7 +57,8 @@ public class EaseShowBigImageActivity extends EaseBaseActivity {
 		setFitSystemForTheme(true, R.color.black, false);
 		image = (EasePhotoView) findViewById(R.id.image);
 		ProgressBar loadLocalPb = (ProgressBar) findViewById(R.id.pb_load_local);
-		default_res = getIntent().getIntExtra("default_image", R.drawable.ease_default_avatar);
+		//default_res = getIntent().getIntExtra("default_image", R.drawable.ease_default_avatar);
+		default_res = getIntent().getIntExtra("default_image", R.drawable.toux1);
 		Uri uri = getIntent().getParcelableExtra("uri");
 		filename = getIntent().getExtras().getString("filename");
 		String msgId = getIntent().getExtras().getString("messageId");

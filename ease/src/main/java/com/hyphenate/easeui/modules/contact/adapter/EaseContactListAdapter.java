@@ -150,7 +150,8 @@ public class EaseContactListAdapter extends EaseBaseRecyclerViewAdapter<EaseUser
             Glide.with(mContext)
                     .load(item.getAvatar())
                     .error(contactSetModel.getAvatarDefaultSrc() != null ? contactSetModel.getAvatarDefaultSrc()
-                            : ContextCompat.getDrawable(mContext, R.drawable.toux))
+                            : ContextCompat.getDrawable(mContext, R.drawable.toux1))
+                            //: ContextCompat.getDrawable(mContext, R.drawable.toux))
                     .into(mAvatar);
         }
     }
