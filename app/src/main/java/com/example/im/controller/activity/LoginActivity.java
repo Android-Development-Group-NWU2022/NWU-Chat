@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +49,6 @@ public class LoginActivity extends Activity {
                 Intent intent=new Intent();
                 intent.setClass(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);
-                //regist();
             }
         });
 
@@ -112,7 +112,15 @@ public class LoginActivity extends Activity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(LoginActivity.this, "登录失败"+s, Toast.LENGTH_SHORT).show();
+                                if (s.equals("Username or password is wrong")){
+                                    Toast.makeText(LoginActivity.this, "登录失败,用户名或密码错误", Toast.LENGTH_SHORT).show();
+                                }else if (s.equals("User dosn't exist")){
+                                    Toast.makeText(LoginActivity.this, "登录失败,用户不存在", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Log.v("qxj",s);
+                                    Toast.makeText(LoginActivity.this, "登录失败"+s, Toast.LENGTH_SHORT).show();
+                                }
+
                             }
                         });
                     }
